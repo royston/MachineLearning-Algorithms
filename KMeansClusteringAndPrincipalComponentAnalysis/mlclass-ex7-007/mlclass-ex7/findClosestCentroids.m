@@ -21,7 +21,16 @@ idx = zeros(size(X,1), 1);
 % Note: You can use a for-loop over the examples to compute this.
 %
 
-
+for index = 1 : size(X, 1)
+	% get each row in X. Each row represents a point (x, y)
+	point = X(index,:);
+	
+	% Find the euclidian distance between each point and each centroids
+	diffSq = (point .- centroids) .^ 2;
+	distancesToAllCentroidsSq = sum(diffSq, 2);
+	[val, minCId] = min(distancesToAllCentroidsSq);
+	idx(index) = minCId;
+end
 
 
 

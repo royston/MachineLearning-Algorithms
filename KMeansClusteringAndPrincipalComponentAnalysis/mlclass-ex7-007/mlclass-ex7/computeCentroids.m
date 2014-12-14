@@ -25,8 +25,16 @@ centroids = zeros(K, n);
 %
 % Note: You can use a for-loop over the centroids to compute this.
 %
-
-
+for cIndex = 1 : size(centroids, 1)
+	% Find rows indexes in idx that have cIndex as value
+	rowIdx = idx == cIndex;
+	
+	%Get a subset of X with these indexes
+	XSub = X(rowIdx, :);
+	
+	%Find mean of Qualifying rows
+	centroids(cIndex,:) = mean(XSub,1);
+end
 
 
 
